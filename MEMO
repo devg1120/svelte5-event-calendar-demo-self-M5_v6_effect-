@@ -1,0 +1,22 @@
+
+npm i --save-dev prettier-plugin-svelte prettier
+
+
+// .prettierrc
+{
+    "plugins": ["prettier-plugin-svelte"],
+    "pluginSearchDirs": ["."], 
+    "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+}
+
+npx prettier --write .
+
+
+
+##########################################
+MONTH VIEW
+   // bgChunks   allDay task
+   // longChanks Day Bitween Time task
+   // chunks     Time task
+
+

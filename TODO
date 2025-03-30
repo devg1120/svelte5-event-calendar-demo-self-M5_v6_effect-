@@ -1,0 +1,30 @@
+
+src/lib/packages/day-grid/src/Week.svelte
+
+    let { chunks, bgChunks , longChunks} = $derived.by(() => {
+
+
+src/lib/packages/day-grid/src/Day.svelte
+    // bgChunks   allDay task
+    // longChanks Day Bitween Time task
+    // chunks     Time task
+
+
+    let style = $derived.by(() => {
+        //let style = `height:calc(${chunk.days * 100}% + ${chunk.days - 1}px);`;
+        //let style = `.allDaySlot { height:calc($bgChunks.length * 90)px)}`;
+        let style = `.allDaySlot { height:  90px}`;
+        return style
+        })
+
+
+<style>
+
+     .allDaySlot { height:  10px}
+
+</style>
+
+
+
+    <div class="[{$theme.bgEvents} allDaySlot" >
+
