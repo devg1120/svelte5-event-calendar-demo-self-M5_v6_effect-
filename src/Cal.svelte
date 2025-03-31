@@ -84,6 +84,7 @@
         }
 
         return [
+
             {
                 start: days[-7] + " 10:00",
                 end: days[-7] + " 14:00",
@@ -91,6 +92,7 @@
                 title: "The calendar can display background and regular events",
                 color: "#FE6B64",
             },
+    
             {
                 start: days[-7] + " 10:00",
                 end: days[-7] + " 14:00",
@@ -98,6 +100,7 @@
                 title: "The calendar can display background and regular events",
                 color: "#4E6B00",
             },
+    
             {
                 start: days[-7] + " 10:00",
                 end: days[-5] + " 14:00",
@@ -105,6 +108,8 @@
                 title: "Long 1",
                 color: "#ADD8E6",
             },
+	    
+    
             {
                 start: days[-5] + " 10:00",
                 end: days[-4] + " 14:00",
@@ -112,6 +117,7 @@
                 title: "Long 2",
                 color: "#AD00E6",
             },
+	    
             {
                 start: days[-6] + " 10:00",
                 end: days[-4] + " 14:00",
@@ -120,6 +126,7 @@
                 color: "#FFB6C1",
                 allDay: true,
             },
+
             {
                 start: days[-4] + " 10:00",
                 end: days[-2] + " 14:00",
@@ -128,13 +135,22 @@
                 color: "#DDA0DD",
                 allDay: true,
             },
+
             {
                 start: days[-5] + " 9:00",
+                end: days[-5] + " 10:00",
+                resourceId: 1,
+                title: "END",
+                color: "#00BFFF	",
+            },
+            {
+                start: days[-5] + " 8:00",
                 end: days[-5] + " 10:00",
                 resourceId: 1,
                 title: "The calendar can display background and regular events",
                 color: "#00BFFF	",
             },
+/*
             { start: days[0] + " 00:00", end: days[0] + " 09:00", resourceId: 1, display: "background" },
             { start: days[1] + " 12:00", end: days[1] + " 14:00", resourceId: 2, display: "background" },
             { start: days[2] + " 17:00", end: days[2] + " 24:00", resourceId: 1, display: "background" },
@@ -190,6 +206,7 @@
                 color: "#B29DD9",
                 allDay: true,
             },
+*/
         ];
     }
 

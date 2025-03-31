@@ -21,9 +21,10 @@
         toLocalDate,
     } from "@event-calendar/core";
     import Event from "./Event.svelte";
+    import EventSpace from "./EventSpace.svelte";
     import Popup from "./Popup.svelte";
 
-    let { date, chunks, bgChunks, longChunks, iChunks = [], dates } = $props();
+    let { date, chunks, bgChunks, longChunks, iChunks = [], dates , allDaySlotHeight = 0} = $props();
     // bgChunks   allDay task
     // longChanks Day Bitween Time task
     // chunks     Time task
@@ -78,17 +79,19 @@
             runReposition(refs, dayChunks);
         }
     }
-
+/*
     let style = $derived.by(() => {
         //let style = `height:calc(${chunk.days * 100}% + ${chunk.days - 1}px);`;
         //let style = `.allDaySlot { height:calc($bgChunks.length * 90)px)}`;
         let style = `.allDaySlot { height:  90px}`;
 	return style
 	})
-
+	*/
+    
     $effect(() => {
         disabled = outsideRange(date, $validRange);
     });
+
     $effect(() => {
         untrack(() => {
             if (!disabled) {
@@ -99,11 +102,23 @@
                 for (let chunk of chunks) {
                     if (datesEqual(chunk.date, date)) {
                         dayChunks.push(chunk);
+			//console.log(chunk)
                         // if ($dayMaxEvents !== false && dayChunks.length > $dayMaxEvents) {
                         // 	chunk.hidden = true;
                         // }
+			console.log(chunk.event.title)
+			chunk.space = false;
+			if (chunk.event.title == "END") {
+			    //let chunk2 = Object.assign({}, chunk);
+			    let chunk2 = structuredClone( chunk);
+			    chunk2.event.title = "SPACE"
+			    chunk2.space = true;
+                            dayChunks.push(chunk2);
+			}
                     }
                 }
+		//console.log(chunks.length, dayChunks.length)
+                //dayChunks.push({display:false,dumy:true});
             }
         });
     });
@@ -154,10 +169,9 @@
     });
 </script>
 
+
 <style>
-
-     .allDaySlot { height:  10px}
-
+      .allDaySlot { height:var(--allDaySlotHeight)}
 </style>
 
 <div
@@ -167,6 +181,7 @@
         : ''}{highlight ? ' ' + $theme.highlight : ''}{disabled ? ' ' + $theme.disabled : ''}"
     role="cell"
     onpointerdown={$_interaction.action?.select}
+    style="--allDaySlotHeight: {allDaySlotHeight}px"
 >
     <div class={$theme.dayHead}>
         <time datetime={toISOString(date, 10)} use:setContent={$_intlDayCell.format(date)}></time>
@@ -174,15 +189,27 @@
             <span class={$theme.weekNumber} use:setContent={weekNumber}></span>
         {/if}
     </div>
-
-    <div class="[{$theme.bgEvents} allDaySlot" >
+<!--
+    <div class="{$theme.bgEvents} allDaySlot" >
         {#if !disabled}
             {#each dayBgChunks as chunk (chunk.event)}
-                <Event  {chunk} />
+	        {#if chunk.space }
+                    <Event  {chunk} />
+                {:else}
+		    <div>SPACE</div>
+                {/if}
             {/each}
         {/if}
     </div>
-   
+-->
+    <div class="[{$theme.bgEvents} allDaySlot" >
+        {#if !disabled}
+            {#each dayBgChunks as chunk, i (chunk.event)}
+                <Event {chunk}  {dates} bind:this={refs[i]} />
+            {/each}
+        {/if}
+    </div>
+
     {#if !disabled}
         <!-- Pointer -->
         {#if iChunks[2] && datesEqual(iChunks[2].date, date)}
@@ -197,13 +224,25 @@
             </div>
         {/if}
     {/if}
+  
     <div class={$theme.events}>
         {#if !disabled}
             {#each dayChunks as chunk, i (chunk.event)}
+	    <!--
                 <Event {chunk} {longChunks} {dates} bind:this={refs[i]} />
+                <Event {chunk} null {dates} bind:this={refs[i]} />
+                <Event {chunk} {longChunks} {dates} bind:this={refs[i]} />
+	    -->
+	        {#if !chunk.space }
+                     <Event {chunk} {longChunks} {dates} bind:this={refs[i]} />
+                {:else}
+		    <EventSpace/>
+                {/if}
             {/each}
         {/if}
     </div>
+   
+    
     {#if showPopup}
         <Popup />
     {/if}

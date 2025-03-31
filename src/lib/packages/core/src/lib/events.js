@@ -161,12 +161,12 @@ function _cloneEvent(event, dateFn) {
  */
 export function prepareEventChunks(chunks, hiddenDays) {
     let longChunks = {};
-
     if (chunks.length) {
         sortEventChunks(chunks);
 
         let prevChunk;
         for (let chunk of chunks) {
+
             let dates = [];
             let date = setMidnight(cloneDate(chunk.start));
             while (chunk.end > date) {
@@ -176,11 +176,13 @@ export function prepareEventChunks(chunks, hiddenDays) {
                         let key = date.getTime();
                         if (longChunks[key]) {
                             longChunks[key].chunks.push(chunk);
+                             //console.log("push")
                         } else {
                             longChunks[key] = {
                                 sorted: false,
                                 chunks: [chunk],
                             };
+                             //console.log("add",chunk.event.title)
                         }
                     }
                 }

@@ -232,7 +232,6 @@
 .ec-days {
     display: flex;
     border-style: none none solid;
-
     &:last-child {
         border-bottom: none;
     }
@@ -421,7 +420,6 @@
 
 .ec-bg-events {
     position: relative;
-
     .ec-day-grid &,
     .ec-all-day & {
         position: absolute;

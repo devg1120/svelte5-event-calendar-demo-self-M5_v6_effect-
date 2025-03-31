@@ -38,6 +38,8 @@
     let end = $state();
     let refs = $state([]);
     let debounceHandle = {};
+    let allDaySlotHeight = 40;
+
     let { chunks, bgChunks , longChunks} = $derived.by(() => {
 
             let chunks = [];
@@ -45,19 +47,24 @@
             for (let event of $_events) {
                 if (eventIntersects(event, start, end, $filterEventsWithResources ? $resources : undefined)) {
                     let chunk = createEventChunk(event, start, end);
-                    if (bgEvent(event.display)) {
+                    //if (bgEvent(event.display)) {
                         if (event.allDay) {
+			    //console.log("bgChunk:", chunk)
                             bgChunks.push(chunk);
-                        }
+                     //   }
                     } else {
                         chunks.push(chunk);
                     }
                 }
             }
-            prepareEventChunks(bgChunks, $hiddenDays);
+            let tmp = prepareEventChunks(bgChunks, $hiddenDays);
             let longChunks = prepareEventChunks(chunks, $hiddenDays);
             // Run reposition only when events get changed
             //reposition();
+
+           //console.log( "chanks",chunks  );
+           //console.log( "bgChanks", bgChunks );
+           console.log( "longChunks", longChunks );
            return { chunks, bgChunks, longChunks };
 
 
@@ -141,12 +148,22 @@
             }
         });
     });
+
+    let weekRowHeight = 300;
 </script>
 
-<div class={$theme.days} role="row">
+<style>
+      .weekRow { height:var(--weekRowHeight)}
+</style>
+
+
+<div 
+  class="{$theme.days} weekRow" role="row"
+  style="--weekRowHeight: {weekRowHeight}px"
+>
     {#key chunks}
         {#each dates as date, i}
-            <Day {date} {chunks} {bgChunks} {longChunks} {iChunks} {dates} bind:this={refs[i]} />
+            <Day {date} {chunks} {bgChunks} {longChunks} {iChunks} {dates} {allDaySlotHeight} bind:this={refs[i]} />
         {/each}
     {/key}
 </div>
