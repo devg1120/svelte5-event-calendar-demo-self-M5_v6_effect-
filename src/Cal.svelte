@@ -84,6 +84,7 @@
         }
 
         return [
+/*
 
             {
                 start: days[-7] + " 10:00",
@@ -150,10 +151,12 @@
                 title: "The calendar can display background and regular events",
                 color: "#00BFFF	",
             },
+*/
 /*
             { start: days[0] + " 00:00", end: days[0] + " 09:00", resourceId: 1, display: "background" },
             { start: days[1] + " 12:00", end: days[1] + " 14:00", resourceId: 2, display: "background" },
             { start: days[2] + " 17:00", end: days[2] + " 24:00", resourceId: 1, display: "background" },
+*/
             {
                 start: days[0] + " 10:00",
                 end: days[0] + " 14:00",
@@ -197,7 +200,21 @@
                 title: "…and you can drag and drop the events!",
                 color: "#FE6B64",
             },
-            { start: days[5] + " 18:00", end: days[5] + " 21:00", resourceId: 2, title: "GS2", color: "#B29DD9" },
+            {
+                start: days[5] + " 14:00",
+                end: days[5] + " 19:00",
+                resourceId: 2,
+                title: "…and you can drag and drop the events!",
+                color: "#cc6B64",
+            },
+            {
+                start: days[5] + " 14:00",
+                end: days[5] + " 19:00",
+                resourceId: 2,
+                title: "…and you can drag and drop the events!",
+                color: "#cc6B64",
+            },
+            { start: days[5] + " 18:00", end: days[6] + " 21:00", resourceId: 2, title: "GS2", color: "#B29DD9" },
             {
                 start: days[1],
                 end: days[3],
@@ -206,7 +223,7 @@
                 color: "#B29DD9",
                 allDay: true,
             },
-*/
+
         ];
     }
 

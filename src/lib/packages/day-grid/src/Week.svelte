@@ -149,17 +149,19 @@
         });
     });
 
-    let weekRowHeight = 300;
+    let weekRowHeight = 200;
 </script>
 
+<!--
 <style>
       .weekRow { height:var(--weekRowHeight)}
 </style>
-
-
-<div 
   class="{$theme.days} weekRow" role="row"
   style="--weekRowHeight: {weekRowHeight}px"
+-->
+
+<div 
+  class="{$theme.days} " role="row"
 >
     {#key chunks}
         {#each dates as date, i}
