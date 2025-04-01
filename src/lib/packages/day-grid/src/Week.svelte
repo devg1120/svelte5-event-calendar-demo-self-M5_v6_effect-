@@ -64,7 +64,7 @@
 
            //console.log( "chanks",chunks  );
            //console.log( "bgChanks", bgChunks );
-           console.log( "longChunks", longChunks );
+           //console.log( "longChunks", longChunks );
            return { chunks, bgChunks, longChunks };
 
 

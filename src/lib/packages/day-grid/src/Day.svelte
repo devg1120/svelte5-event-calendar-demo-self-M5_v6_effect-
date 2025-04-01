@@ -95,6 +95,7 @@
     $effect(() => {
         untrack(() => {
             if (!disabled) {
+                //console.log("longChunks",longChunks)
                 dayChunks = [];
                 dayBgChunks = bgChunks.filter((bgChunk) => datesEqual(bgChunk.date, date));
                 hiddenEvents.clear();
@@ -106,9 +107,10 @@
                         // if ($dayMaxEvents !== false && dayChunks.length > $dayMaxEvents) {
                         // 	chunk.hidden = true;
                         // }
-			console.log(chunk.event.title)
+			//console.log(chunk.event.title)
 			chunk.space = false;
 			if (chunk.event.title == "END") {
+                console.log("longChunks",longChunks)
 			    //let chunk2 = Object.assign({}, chunk);
 			    //let chunk2 = structuredClone( chunk);
                             let chunk2 =  JSON.parse(JSON.stringify(chunk));

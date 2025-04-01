@@ -175,7 +175,7 @@
                 start: days[2] + " 09:00",
                 end: days[2] + " 13:00",
                 resourceId: 2,
-                title: "Events can be assigned to resources and the calendar has the resources view built-in",
+                title: "END",
                 color: "#779ECB",
             },
             { start: days[3] + " 14:00", end: days[3] + " 20:00", resourceId: 1, title: "GS1", color: "#FE6B64" },
@@ -203,7 +203,7 @@
             },
             {
                 start: days[4] + " 14:00",
-                end: days[5] + " 19:00",
+                end: days[6] + " 19:00",
                 resourceId: 2,
                 title: "LONG",
                 color: "#cc6B64",
