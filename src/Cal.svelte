@@ -186,6 +186,28 @@
                 title: "Overlapping events are positioned properly",
                 color: "#779ECB",
             },
+
+            {
+                start: days[4] + " 10:00",
+                end: days[4] + " 16:00",
+                resourceId: 2,
+                title: { html: "You have complete control over the <i><b>display</b></i> of events…" },
+                color: "#779ECB",
+            },
+            {
+                start: days[4] + " 14:00",
+                end: days[4] + " 19:00",
+                resourceId: 2,
+                title: "…and you can drag and drop the events!",
+                color: "#FE6B64",
+            },
+            {
+                start: days[4] + " 14:00",
+                end: days[5] + " 19:00",
+                resourceId: 2,
+                title: "LONG",
+                color: "#cc6B64",
+            },
             {
                 start: days[5] + " 10:00",
                 end: days[5] + " 16:00",
@@ -204,9 +226,11 @@
                 start: days[5] + " 14:00",
                 end: days[5] + " 19:00",
                 resourceId: 2,
-                title: "…and you can drag and drop the events!",
-                color: "#cc6B64",
+                title: "END",
+                color: "#00cc66",
             },
+
+/*
             {
                 start: days[5] + " 14:00",
                 end: days[5] + " 19:00",
@@ -214,6 +238,7 @@
                 title: "…and you can drag and drop the events!",
                 color: "#cc6B64",
             },
+*/
             { start: days[5] + " 18:00", end: days[6] + " 21:00", resourceId: 2, title: "GS2", color: "#B29DD9" },
             {
                 start: days[1],

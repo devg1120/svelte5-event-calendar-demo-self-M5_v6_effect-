@@ -101,7 +101,7 @@
                 hiddenEvents = hiddenEvents;
                 for (let chunk of chunks) {
                     if (datesEqual(chunk.date, date)) {
-                        dayChunks.push(chunk);
+                        //dayChunks.push(chunk);
 			//console.log(chunk)
                         // if ($dayMaxEvents !== false && dayChunks.length > $dayMaxEvents) {
                         // 	chunk.hidden = true;
@@ -110,11 +110,13 @@
 			chunk.space = false;
 			if (chunk.event.title == "END") {
 			    //let chunk2 = Object.assign({}, chunk);
-			    let chunk2 = structuredClone( chunk);
+			    //let chunk2 = structuredClone( chunk);
+                            let chunk2 =  JSON.parse(JSON.stringify(chunk));
 			    chunk2.event.title = "SPACE"
 			    chunk2.space = true;
                             dayChunks.push(chunk2);
 			}
+                        dayChunks.push(chunk);
                     }
                 }
 		//console.log(chunks.length, dayChunks.length)
